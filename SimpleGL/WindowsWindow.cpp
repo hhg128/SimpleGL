@@ -67,14 +67,20 @@ namespace SimpleGL
 		return ::RegisterClass(&wc);
 	}
 
-	void WindowsWindow::MsgLoop()
+	bool WindowsWindow::MsgLoop()
 	{
 		MSG msg;
-		while (GetMessage(&msg, NULL, 0, 0))
+		while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
+			if (msg.message == WM_QUIT)
+			{
+				return false;
+			}
+
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+		return true;
 	}
 
 	LRESULT CALLBACK WindowsWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

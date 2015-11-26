@@ -2,10 +2,20 @@
 
 namespace SimpleGL
 {
+	class Window;
+	class WindowsWindow;
+
 	class Engine
 	{
 	public:
 		Engine();
-		~Engine();
+		virtual ~Engine();
+
+		virtual void Initialize();
+		virtual void Finalize();
+		virtual void Tick();
+
+	private:
+		WindowsWindow* RenderWindow;
 	};
 }

@@ -13,7 +13,7 @@ namespace SimpleGL
 		virtual void Finalize() override;
 		virtual void Update() override;
 
-		static void MsgLoop();
+		static bool MsgLoop();
 
 	private:
 		bool InitInstance(HINSTANCE hInstance, int nCmdShow);
