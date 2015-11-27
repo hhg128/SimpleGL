@@ -36,7 +36,7 @@ namespace SimpleGL
 	bool WindowsWindow::InitInstance(HINSTANCE hInstance, int nCmdShow)
 	{
 		HWND hWnd;
-		hWnd = CreateWindow(TEXT("SimpleEngine"), TEXT("Engine"), WS_OVERLAPPEDWINDOW, 0, 0, 800, 600, NULL, NULL, hInstance, NULL);
+		hWnd = CreateWindowEx(NULL, TEXT("SimpleEngine"), TEXT("Engine"), WS_OVERLAPPEDWINDOW, 0, 0, 800, 600, NULL, NULL, NULL, NULL);
 
 		if (!hWnd)
 		{
@@ -51,20 +51,22 @@ namespace SimpleGL
 
 	int WindowsWindow::MyRegisterClass(HINSTANCE hInstance)
 	{
-		WNDCLASS wc;
+		WNDCLASSEX wcex;
 
-		wc.style = CS_DBLCLKS;
-		wc.lpfnWndProc = WndProc;
-		wc.cbClsExtra = 0;
-		wc.cbWndExtra = 0;
-		wc.hInstance = hInstance;
-		wc.hIcon = nullptr;
-		wc.hCursor = nullptr;
-		wc.hbrBackground = nullptr;
-		wc.lpszMenuName = nullptr;
-		wc.lpszClassName = TEXT("SimpleEngine");
+		wcex.cbSize = sizeof(WNDCLASSEX);
+		wcex.style = CS_DBLCLKS | CS_HREDRAW | CS_VREDRAW;;
+		wcex.lpfnWndProc = WndProc;
+		wcex.cbClsExtra = 0;
+		wcex.cbWndExtra = 0;
+		wcex.hInstance = 0;
+		wcex.hIcon = LoadIcon(NULL, IDI_APPLICATION);;
+		wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+		wcex.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+		wcex.lpszMenuName = nullptr;
+		wcex.lpszClassName = TEXT("SimpleEngine");
+		wcex.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 
-		return ::RegisterClass(&wc);
+		return ::RegisterClassEx(&wcex);
 	}
 
 	bool WindowsWindow::MsgLoop()
