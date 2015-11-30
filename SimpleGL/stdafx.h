@@ -22,5 +22,8 @@
 #include <iostream>
 #include <cassert>
 
+// DirectX includes
 #include <d3d11_1.h>
 #include <d3dCompiler.h>
+
+#include <wrl.h>

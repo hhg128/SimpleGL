@@ -7,5 +7,11 @@ namespace SimpleGL
 	public:
 		RHIDX11();
 		~RHIDX11();
+
+		bool Initialize();
+		void Finalize();
+
+	protected:
+		Microsoft::WRL::ComPtr<ID3D11Device>	m_pDevice;
 	};
 }

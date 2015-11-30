@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceView.h" />
     <ClInclude Include="RHIDX11.h" />
     <ClInclude Include="SimpleGL.h" />
     <ClInclude Include="stdafx.h" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="ResourceView.cpp" />
     <ClCompile Include="RHIDX11.cpp" />
     <ClCompile Include="SimpleGL.cpp" />
     <ClCompile Include="stdafx.cpp">
