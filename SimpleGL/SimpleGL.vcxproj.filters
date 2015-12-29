@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Rendering">
+      <UniqueIdentifier>{82f9f54a-9e82-44ed-bea4-1a60ec179aa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Rendering\Shader">
+      <UniqueIdentifier>{789a1410-acdd-459e-b714-b9ec222d3dc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -45,6 +51,21 @@
     <ClInclude Include="ResourceView.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderBase.h">
+      <Filter>소스 파일\Rendering\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>소스 파일\Rendering\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>소스 파일\Rendering\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsPipeine.h">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsPipelineDesc.h">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -67,6 +88,21 @@
     </ClCompile>
     <ClCompile Include="ResourceView.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderBase.cpp">
+      <Filter>소스 파일\Rendering\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>소스 파일\Rendering\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>소스 파일\Rendering\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsPipeine.cpp">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsPipelineDesc.cpp">
+      <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

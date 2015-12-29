@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Engine.h"
 #include "WindowsWindow.h"
+#include "RHIDX11.h"
 
 namespace SimpleGL
 {
@@ -15,6 +16,9 @@ namespace SimpleGL
 
 	void Engine::Initialize()
 	{
+		RHIDevice = new RHIDX11;
+		RHIDevice->Initialize();
+
 		RenderWindow = new WindowsWindow;
 		if (RenderWindow)
 			RenderWindow->Initialize();

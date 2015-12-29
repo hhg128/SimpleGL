@@ -4,6 +4,7 @@ namespace SimpleGL
 {
 	class Window;
 	class WindowsWindow;
+	class RHIDX11;
 
 	class Engine
 	{
@@ -16,6 +17,7 @@ namespace SimpleGL
 		virtual void Tick();
 
 	private:
-		WindowsWindow* RenderWindow;
+		WindowsWindow*	RenderWindow;
+		RHIDX11*		RHIDevice;
 	};
 }
