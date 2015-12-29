@@ -18,6 +18,20 @@ namespace SimpleGL
 
 	bool RHIDX11::Initialize()
 	{
+		CreateDevice();
+
+		CreateSwapChain();
+
+		return true;
+	}
+
+	void RHIDX11::Finalize()
+	{
+
+	}
+
+	void RHIDX11::CreateDevice()
+	{
 		UINT CreateDeviceFlags = 0;
 		D3D_FEATURE_LEVEL CreatedLevel;
 
@@ -32,7 +46,10 @@ namespace SimpleGL
 			&m_Device,
 			&CreatedLevel,
 			&m_DeviceContext);
+	}
 
+	void RHIDX11::CreateSwapChain()
+	{
 		using namespace Microsoft::WRL;
 		ComPtr<IDXGIDevice> dxgiDevice;
 		m_DeviceContext.As(&dxgiDevice);
@@ -64,12 +81,6 @@ namespace SimpleGL
 		SwapChainDesc.Flags = 0;
 
 		dxgiFactory->CreateSwapChain(m_Device.Get(), &SwapChainDesc, m_SwapChain.GetAddressOf());
-
-		return false;
 	}
 
-	void RHIDX11::Finalize()
-	{
-
-	}
 }
