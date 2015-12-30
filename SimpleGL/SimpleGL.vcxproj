@@ -147,6 +147,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GraphicsPipeine.h" />
     <ClInclude Include="GraphicsPipelineDesc.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="PixelShader.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceView.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GraphicsPipeine.cpp" />
     <ClCompile Include="GraphicsPipelineDesc.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="ResourceView.cpp" />
     <ClCompile Include="RHIDX11.cpp" />
