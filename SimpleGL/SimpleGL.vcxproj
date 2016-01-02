@@ -152,6 +152,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceView.h" />
     <ClInclude Include="RHIDX11.h" />
+    <ClInclude Include="RHIDX12.h" />
     <ClInclude Include="ShaderBase.h" />
     <ClInclude Include="SimpleGL.h" />
     <ClInclude Include="stdafx.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="ResourceView.cpp" />
     <ClCompile Include="RHIDX11.cpp" />
+    <ClCompile Include="RHIDX12.cpp" />
     <ClCompile Include="ShaderBase.cpp" />
     <ClCompile Include="SimpleGL.cpp" />
     <ClCompile Include="stdafx.cpp">
