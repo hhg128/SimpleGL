@@ -16,12 +16,13 @@ namespace SimpleGL
 
 	void Engine::Initialize()
 	{
-		RHIDevice = new RHIDX11;
-		RHIDevice->Initialize();
-
 		RenderWindow = new WindowsWindow;
 		if (RenderWindow)
 			RenderWindow->Initialize();
+
+		RHIDevice = new RHIDX11;
+		if(RHIDevice)
+			RHIDevice->Initialize(RenderWindow);
 	}
 
 	void Engine::Finalize()
@@ -43,6 +44,9 @@ namespace SimpleGL
 			{
 				return;
 			}
+
+			//Update & Rendering
+			RHIDevice->Present();
 		}
 	}
 }

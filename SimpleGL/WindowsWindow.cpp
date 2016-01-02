@@ -35,16 +35,15 @@ namespace SimpleGL
 
 	bool WindowsWindow::InitInstance(HINSTANCE hInstance, int nCmdShow)
 	{
-		HWND hWnd;
-		hWnd = CreateWindowEx(NULL, TEXT("SimpleEngine"), TEXT("Engine"), WS_OVERLAPPEDWINDOW, 0, 0, 800, 600, NULL, NULL, NULL, NULL);
+		m_hWnd = CreateWindowEx(NULL, TEXT("SimpleEngine"), TEXT("Engine"), WS_OVERLAPPEDWINDOW, 0, 0, 800, 600, NULL, NULL, NULL, NULL);
 
-		if (!hWnd)
+		if (!m_hWnd)
 		{
 			return false;
 		}
 
-		::ShowWindow(hWnd, nCmdShow);
-		::UpdateWindow(hWnd);
+		::ShowWindow(m_hWnd, nCmdShow);
+		::UpdateWindow(m_hWnd);
 
 		return true;
 	}

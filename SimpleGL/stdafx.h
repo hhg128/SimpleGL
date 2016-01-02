@@ -26,5 +26,5 @@
 #include <d3d11_1.h>
 #include <DXGI.h>
 #include <d3dCompiler.h>
-
+#include <directxcolors.h>
 #include <wrl.h>
