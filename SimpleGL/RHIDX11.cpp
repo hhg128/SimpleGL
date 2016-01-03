@@ -128,14 +128,97 @@ namespace SimpleGL
 		m_SwapChain->Present(SyncInterval, PresentFlags);
 	}
 
-	void RHIDX11::CreateVertexBuffer()
+	HRESULT RHIDX11::CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut)
 	{
+		HRESULT hr = S_OK;
 
+		DWORD dwShaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
+#ifdef _DEBUG
+		// Set the D3DCOMPILE_DEBUG flag to embed debug information in the shaders.
+		// Setting this flag improves the shader debugging experience, but still allows 
+		// the shaders to be optimized and to run exactly the way they will run in 
+		// the release configuration of this program.
+		dwShaderFlags |= D3DCOMPILE_DEBUG;
+
+		// Disable optimizations to further improve shader debugging
+		dwShaderFlags |= D3DCOMPILE_SKIP_OPTIMIZATION;
+#endif
+
+		ID3DBlob* pErrorBlob = nullptr;
+		hr = D3DCompileFromFile(szFileName, nullptr, nullptr, szEntryPoint, szShaderModel,
+			dwShaderFlags, 0, ppBlobOut, &pErrorBlob);
+		if (FAILED(hr))
+		{
+			if (pErrorBlob)
+			{
+				OutputDebugStringA(reinterpret_cast<const char*>(pErrorBlob->GetBufferPointer()));
+				pErrorBlob->Release();
+			}
+			return hr;
+		}
+		if (pErrorBlob) pErrorBlob->Release();
+
+		return S_OK;
 	}
 
-	void RHIDX11::CreateIndexBuffer()
+	void RHIDX11::CreateVertexShader()
 	{
+		HRESULT hr = S_OK;
 
+		ID3DBlob* pVSBlob = nullptr;
+		hr = CompileShaderFromFile(L"Tutorial07.fx", "VS", "vs_4_0", &pVSBlob);
+		if (FAILED(hr))
+		{
+			MessageBox(nullptr,
+				L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK);
+			return;
+		}
+
+		hr = m_Device->CreateVertexShader(pVSBlob->GetBufferPointer(), pVSBlob->GetBufferSize(), nullptr, &m_pVertexShader);
+		if (FAILED(hr))
+		{
+			pVSBlob->Release();
+			return;
+		}
+
+		D3D11_INPUT_ELEMENT_DESC layout[] =
+		{
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		};
+		UINT numElements = ARRAYSIZE(layout);
+
+		hr = m_Device->CreateInputLayout(layout, numElements, pVSBlob->GetBufferPointer(),
+			pVSBlob->GetBufferSize(), &m_pVertexLayout);
+		pVSBlob->Release();
+		if (FAILED(hr))
+		{
+			assert(hr);
+		}
+
+		m_DeviceContext->IASetInputLayout(m_pVertexLayout);
+	}
+
+	void RHIDX11::CreatePixelShader()
+	{
+		HRESULT hr = S_OK;
+
+		ID3DBlob* pPSBlob = nullptr;
+		hr = CompileShaderFromFile(L"Tutorial07.fx", "PS", "ps_4_0", &pPSBlob);
+		if (FAILED(hr))
+		{
+			MessageBox(nullptr,
+				L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK);
+			return;
+		}
+
+		// Create the pixel shader
+		hr = m_Device->CreatePixelShader(pPSBlob->GetBufferPointer(), pPSBlob->GetBufferSize(), nullptr, &m_pPixelShader);
+		pPSBlob->Release();
+		if (FAILED(hr))
+		{
+			assert(hr);
+		}
 	}
 
 	void RHIDX11::CreateRenderTargetView()
