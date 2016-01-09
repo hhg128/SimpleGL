@@ -72,6 +72,9 @@
     <ClInclude Include="RHIDX12.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -114,6 +117,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="RHIDX12.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
