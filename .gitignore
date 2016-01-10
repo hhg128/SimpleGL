@@ -2,3 +2,8 @@ ipch
 /*.sdf
 /*.opensdf
 /*.opendb
+/x64/Debug
+/.vs/SimpleGL/v14
+/SimpleGL/Debug
+/SimpleGL/x64/Debug
+*.suo
