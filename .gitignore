@@ -7,3 +7,5 @@ ipch
 /SimpleGL/Debug
 /SimpleGL/x64/Debug
 *.suo
+/html
+/latex

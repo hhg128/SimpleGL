@@ -156,6 +156,7 @@
     <ClInclude Include="RHIDX12.h" />
     <ClInclude Include="ShaderBase.h" />
     <ClInclude Include="SimpleGL.h" />
+    <ClInclude Include="SkeletalMesh.h" />
     <ClInclude Include="StaticMesh.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="RHIDX12.cpp" />
     <ClCompile Include="ShaderBase.cpp" />
     <ClCompile Include="SimpleGL.cpp" />
+    <ClCompile Include="SkeletalMesh.cpp" />
     <ClCompile Include="StaticMesh.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

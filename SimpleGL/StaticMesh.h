@@ -23,6 +23,11 @@ namespace SimpleGL
 		std::vector<StaticMeshVertex> VertexData;
 	};
 
+	class StaticMeshVertexBuffer
+	{
+
+	};
+
 	class StaticMesh
 	{
 	public:
