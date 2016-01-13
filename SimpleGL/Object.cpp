@@ -17,11 +17,13 @@ namespace SimpleGL
 	void Object::Initialize()
 	{
 		Model = new TriangleModel;
+		Model->Initialize();
 	}
 
 	void Object::Finalize()
 	{
-
+		Model->Finalize();
+		delete Model;
 	}
 
 	void Object::Tick()

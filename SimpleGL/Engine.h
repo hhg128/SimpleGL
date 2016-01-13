@@ -5,6 +5,7 @@ namespace SimpleGL
 	class Window;
 	class WindowsWindow;
 	class RHIDX11;
+	class ObjectManager;
 
 	class Engine
 	{
@@ -19,5 +20,6 @@ namespace SimpleGL
 	private:
 		WindowsWindow*	RenderWindow;
 		RHIDX11*		RHIDevice;
+		ObjectManager*	m_pObjectManager;
 	};
 }

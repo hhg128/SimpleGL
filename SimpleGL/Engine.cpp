@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "WindowsWindow.h"
 #include "RHIDX11.h"
+#include "ObjectManager.h"
 
 namespace SimpleGL
 {
@@ -23,6 +24,9 @@ namespace SimpleGL
 		RHIDevice = new RHIDX11;
 		if(RHIDevice)
 			RHIDevice->Initialize(RenderWindow);
+
+		m_pObjectManager = new ObjectManager;
+		m_pObjectManager->CreateObject();
 	}
 
 	void Engine::Finalize()
@@ -46,6 +50,9 @@ namespace SimpleGL
 			}
 
 			//Update & Rendering
+			m_pObjectManager->Tick();
+			m_pObjectManager->Render();
+
 			RHIDevice->Present();
 		}
 	}

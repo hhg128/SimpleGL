@@ -41,7 +41,7 @@ namespace SimpleGL
 
 	void TriangleModel::Finalize()
 	{
-
+		delete Mesh;
 	}
 
 	CubeModel::CubeModel()

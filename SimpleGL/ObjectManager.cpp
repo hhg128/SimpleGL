@@ -5,6 +5,8 @@
 
 namespace SimpleGL
 {
+	INT64 ObjectIdGenerator::m_nId = 0;
+
 	ObjectManager::ObjectManager()
 	{
 	}
@@ -14,16 +16,34 @@ namespace SimpleGL
 	{
 	}
 
-	void ObjectManager::CreateObject(const INT64 nObjectId)
+	Object* ObjectManager::CreateObject(const INT64 nObjectId)
 	{
 		Object* pObject = new Object;
 		AddObejct(nObjectId, pObject);
+		return pObject;
 	}
 
-	void ObjectManager::CreateObject(void)
+	Object* ObjectManager::CreateObject(void)
 	{
 		Object* pObject = new Object;
 		AddObejct(ObjectIdGenerator::Generate(), pObject);
+		return pObject;
+	}
+
+	void ObjectManager::Tick()
+	{
+		for (auto iter = ObjectMap.begin(); iter != ObjectMap.end(); ++iter)
+		{
+			iter->second->Tick();
+		}
+	}
+
+	void ObjectManager::Render()
+	{
+		for (auto iter = ObjectMap.begin(); iter != ObjectMap.end(); ++iter)
+		{
+			iter->second->Render();
+		}
 	}
 
 	void ObjectManager::AddObejct(const INT64 nId, class Object* pObject)

@@ -2,6 +2,8 @@
 
 namespace SimpleGL
 {
+	class Object;
+
 	class ObjectIdGenerator
 	{
 	public:
@@ -11,16 +13,17 @@ namespace SimpleGL
 		static INT64 m_nId;
 	};
 
-	INT64 ObjectIdGenerator::m_nId = 0;
-
 	class ObjectManager
 	{
 	public:
 		ObjectManager();
 		~ObjectManager();
 
-		void CreateObject(void);
-		void CreateObject(const INT64 nObjectId);
+		Object* CreateObject(void);
+		Object* CreateObject(const INT64 nObjectId);
+
+		void Tick();
+		void Render();
 
 	private:
 		void AddObejct(const INT64 nId, class Object* pObject);
