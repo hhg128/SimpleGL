@@ -6,18 +6,7 @@ namespace SimpleGL
 
 	class RHIDX11;
 
-	class ObjectVertex
-	{
-	public:
-		struct Vertex
-		{
-			XMFLOAT3 Pos;
-			XMFLOAT2 Tex;
-		};
-
-		static unsigned int GetElementCount() { return(sizeof(Elements) / sizeof(Elements[0])); }
-		static D3D11_INPUT_ELEMENT_DESC Elements[2];
-	};
+	class TriangleModel;
 
 	class Object
 	{
@@ -30,5 +19,8 @@ namespace SimpleGL
 
 		void Tick();
 		void Render();
+
+	private:
+		TriangleModel* Model;
 	};
 }
