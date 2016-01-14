@@ -21,9 +21,8 @@ namespace SimpleGL
 		if (RenderWindow)
 			RenderWindow->Initialize();
 
-		RHIDevice = new RHIDX11;
-		if(RHIDevice)
-			RHIDevice->Initialize(RenderWindow);
+		RHIDX11::Create();
+		gRHI->Initialize(RenderWindow);
 
 		m_pObjectManager = new ObjectManager;
 		m_pObjectManager->CreateObject();
@@ -53,7 +52,7 @@ namespace SimpleGL
 			m_pObjectManager->Tick();
 			m_pObjectManager->Render();
 
-			RHIDevice->Present();
+			gRHI->Present();
 		}
 	}
 }

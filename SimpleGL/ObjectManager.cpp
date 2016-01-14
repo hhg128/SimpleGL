@@ -26,6 +26,7 @@ namespace SimpleGL
 	Object* ObjectManager::CreateObject(void)
 	{
 		Object* pObject = new Object;
+		pObject->Initialize();
 		AddObejct(ObjectIdGenerator::Generate(), pObject);
 		return pObject;
 	}

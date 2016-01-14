@@ -10,6 +10,8 @@ namespace SimpleGL
 {
 	using namespace Microsoft::WRL;
 
+	RHIDX11* gRHI = nullptr;
+
 	RHIDX11::RHIDX11()
 	{
 	}
@@ -17,6 +19,14 @@ namespace SimpleGL
 
 	RHIDX11::~RHIDX11()
 	{
+	}
+
+	void RHIDX11::Create()
+	{
+		if (gRHI == nullptr)
+		{
+			gRHI = new RHIDX11;
+		}
 	}
 
 	void RHIDX11::Initialize(WindowsWindow* pWindow)
@@ -161,12 +171,12 @@ namespace SimpleGL
 		return S_OK;
 	}
 
-	void RHIDX11::CreateVertexShader()
+	void RHIDX11::CreateVertexShader(D3D11_INPUT_ELEMENT_DESC* pLayout, UINT numElements)
 	{
 		HRESULT hr = S_OK;
 
 		ID3DBlob* pVSBlob = nullptr;
-		hr = CompileShaderFromFile(L"Tutorial07.fx", "VS", "vs_4_0", &pVSBlob);
+		hr = CompileShaderFromFile(L"Shader/basic.fx", "VS", "vs_4_0", &pVSBlob);
 		if (FAILED(hr))
 		{
 			MessageBox(nullptr,
@@ -181,14 +191,7 @@ namespace SimpleGL
 			return;
 		}
 
-		D3D11_INPUT_ELEMENT_DESC layout[] =
-		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		};
-		UINT numElements = ARRAYSIZE(layout);
-
-		hr = m_Device->CreateInputLayout(layout, numElements, pVSBlob->GetBufferPointer(),
+		hr = m_Device->CreateInputLayout(pLayout, numElements, pVSBlob->GetBufferPointer(),
 			pVSBlob->GetBufferSize(), &m_pVertexLayout);
 		pVSBlob->Release();
 		if (FAILED(hr))
@@ -204,7 +207,7 @@ namespace SimpleGL
 		HRESULT hr = S_OK;
 
 		ID3DBlob* pPSBlob = nullptr;
-		hr = CompileShaderFromFile(L"Tutorial07.fx", "PS", "ps_4_0", &pPSBlob);
+		hr = CompileShaderFromFile(L"Shader/basic.fx", "PS", "ps_4_0", &pPSBlob);
 		if (FAILED(hr))
 		{
 			MessageBox(nullptr,

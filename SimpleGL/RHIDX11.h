@@ -15,7 +15,9 @@ namespace SimpleGL
 
 		void Present();
 
-		void CreateVertexShader();
+		static void Create();
+
+		void CreateVertexShader(D3D11_INPUT_ELEMENT_DESC* pLayout, UINT numElements);
 		void CreatePixelShader();
 		void CreateRenderTargetView();
 		void CreateDepthStencilView();
@@ -43,4 +45,6 @@ namespace SimpleGL
 
 		WindowsWindow*	m_pWindow;
 	};
+
+	extern RHIDX11* gRHI;
 }

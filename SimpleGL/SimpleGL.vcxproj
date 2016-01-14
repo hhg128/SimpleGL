@@ -197,6 +197,17 @@
     <Image Include="SimpleGL.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\basic.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Shader\basic_ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Shader\basic_vs.hlsl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
