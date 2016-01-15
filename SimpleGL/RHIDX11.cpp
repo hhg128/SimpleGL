@@ -283,4 +283,14 @@ namespace SimpleGL
 		}
 	}
 
+	void RHIDX11::CreateVertexBuffer()
+	{
+
+	}
+
+	void RHIDX11::CreateIndexBuffer()
+	{
+
+	}
+
 }

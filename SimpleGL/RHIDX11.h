@@ -21,6 +21,8 @@ namespace SimpleGL
 		void CreatePixelShader();
 		void CreateRenderTargetView();
 		void CreateDepthStencilView();
+		void CreateVertexBuffer();
+		void CreateIndexBuffer();
 
 	protected:
 		void CreateDevice();
