@@ -19,6 +19,8 @@ namespace SimpleGL
 		ID3D11VertexShader* GetVertexShader() { return m_pVertexShader; }
 		ID3D11PixelShader* GetPixelShader() { return m_pPixelShader; }
 
+		void GetWindowSize(int& width, int& height);
+
 		void Present();
 
 		static void Create();

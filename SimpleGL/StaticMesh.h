@@ -9,9 +9,8 @@ namespace SimpleGL
 	public:
 	 	struct Vertex
 	 	{
-	 		XMFLOAT3 Pos;
+			XMFLOAT3 Pos;
 			XMFLOAT4 Color;
-	 		//XMFLOAT2 Tex;
 	 	};
 
 		Vertex vertex;
@@ -31,6 +30,18 @@ namespace SimpleGL
 
 	};
 
+	struct CBNeverChanges
+	{
+		XMMATRIX mView;
+		XMMATRIX mProjection;
+		XMMATRIX mWorld;
+	};
+
+	struct ConstantBufferStruct
+	{
+		XMFLOAT4 vMeshColor;
+	};
+
 	class StaticMesh
 	{
 	public:
@@ -40,6 +51,7 @@ namespace SimpleGL
 		void AddVertex(StaticMeshVertex vertex);
 		void AddIndices(unsigned int i1, unsigned int i2, unsigned int i3);
 
+		void PrepareRendering();
 		void Render();
 
 	private:
@@ -48,6 +60,7 @@ namespace SimpleGL
 		ID3D11Buffer* VertexBuffer;
 		ID3D11Buffer* IndexBuffer;
 		ID3D11Buffer* ConstantBuffer;
+		ID3D11Buffer* PSConstantBuffer;
 		ID3D11SamplerState* SamplerLinear;
 	};
 }

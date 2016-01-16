@@ -130,6 +130,15 @@ namespace SimpleGL
 		m_DeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 	}
 
+	void RHIDX11::GetWindowSize(int& width, int& height)
+	{
+		RECT rect;
+		GetClientRect(m_pWindow->GetHwnd(), &rect);
+		
+		width = rect.right - rect.left;
+		height = rect.bottom - rect.top;
+	}
+
 	void RHIDX11::Present()
 	{
 		UINT SyncInterval = 0;
