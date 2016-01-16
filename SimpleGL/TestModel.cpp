@@ -44,6 +44,11 @@ namespace SimpleGL
 		delete Mesh;
 	}
 
+	void TriangleModel::Render()
+	{
+		Mesh->Render();
+	}
+
 	CubeModel::CubeModel()
 	{
 

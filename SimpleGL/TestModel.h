@@ -15,6 +15,8 @@ namespace SimpleGL
 		void Initialize();
 		void Finalize();
 
+		void Render();
+
 	private:
 		StaticMesh*		Mesh;
 	};

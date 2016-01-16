@@ -40,8 +40,14 @@ namespace SimpleGL
 		void AddVertex(StaticMeshVertex vertex);
 		void AddIndices(unsigned int i1, unsigned int i2, unsigned int i3);
 
+		void Render();
+
 	private:
 		std::vector<StaticMeshVertex> Vertices;
 		std::vector<unsigned int> Indices;
+		ID3D11Buffer* VertexBuffer;
+		ID3D11Buffer* IndexBuffer;
+		ID3D11Buffer* ConstantBuffer;
+		ID3D11SamplerState* SamplerLinear;
 	};
 }

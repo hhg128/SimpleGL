@@ -33,7 +33,7 @@ namespace SimpleGL
 
 	void Object::Render()
 	{
-
+		Model->Render();
 	}
 
 }

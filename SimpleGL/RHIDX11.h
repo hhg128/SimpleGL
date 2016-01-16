@@ -13,6 +13,12 @@ namespace SimpleGL
 		void Initialize(WindowsWindow* pWindow);
 		void Finalize();
 
+		Microsoft::WRL::ComPtr<ID3D11Device>&	GetDevice() { return m_Device; }
+		Microsoft::WRL::ComPtr<ID3D11DeviceContext>& GetDeviceContext() { return m_DeviceContext; }
+
+		ID3D11VertexShader* GetVertexShader() { return m_pVertexShader; }
+		ID3D11PixelShader* GetPixelShader() { return m_pPixelShader; }
+
 		void Present();
 
 		static void Create();
@@ -24,13 +30,16 @@ namespace SimpleGL
 		void CreateVertexBuffer();
 		void CreateIndexBuffer();
 
+		void ClearRenterTargetView();
+
+		void Draw();
+
 	protected:
 		void CreateDevice();
 		void CreateSwapChain();
 
 		void SetViewport();
 		void ApplyRenderTargetView();
-		void ClearRenterTargetView();
 
 		HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 

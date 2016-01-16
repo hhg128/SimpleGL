@@ -293,4 +293,8 @@ namespace SimpleGL
 
 	}
 
+	void RHIDX11::Draw()
+	{
+	}
+
 }
