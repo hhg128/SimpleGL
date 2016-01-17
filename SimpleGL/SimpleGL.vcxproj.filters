@@ -84,6 +84,9 @@
     <ClInclude Include="ShaderBase.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="RenderStateDX11.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -139,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="VertexShader.cpp">
       <Filter>소스 파일\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderStateDX11.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

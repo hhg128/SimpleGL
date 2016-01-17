@@ -150,6 +150,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="PixelShader.h" />
+    <ClInclude Include="RenderStateDX11.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceView.h" />
     <ClInclude Include="RHIDX11.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="PixelShader.cpp" />
+    <ClCompile Include="RenderStateDX11.cpp" />
     <ClCompile Include="ResourceView.cpp" />
     <ClCompile Include="RHIDX11.cpp" />
     <ClCompile Include="RHIDX12.cpp" />

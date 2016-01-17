@@ -36,19 +36,19 @@ namespace SimpleGL
 	{
 		XMMATRIX View;
 		CBNeverChanges cbNeverChanges;
- 		//XMVECTOR Eye = XMVectorSet(0.0f, 0.0f, -6.0f, 0.0f);
- 		//XMVECTOR At = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
- 		//XMVECTOR Up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
- 		//View = XMMatrixLookAtLH(Eye, At, Up);
-		View = XMMatrixIdentity();
+ 		XMVECTOR Eye = XMVectorSet(0.0f, 0.0f, -6.0f, 0.0f);
+ 		XMVECTOR At = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
+ 		XMVECTOR Up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+ 		View = XMMatrixLookAtLH(Eye, At, Up);
+		//View = XMMatrixIdentity();
 		cbNeverChanges.mView = XMMatrixTranspose(View);
 
 		INT width, height;
 		gRHI->GetWindowSize(width, height);
 
 		XMMATRIX Projection;
-		//Projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, static_cast<float>(width / height), 0.001f, 1000.0f);
-		Projection = XMMatrixIdentity();
+		Projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, static_cast<float>(width / height), 0.001f, 1000.0f);
+		//Projection = XMMatrixIdentity();
 		cbNeverChanges.mProjection = XMMatrixTranspose(Projection);
 
 		XMMATRIX World;
