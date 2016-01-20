@@ -2,13 +2,14 @@
 
 namespace SimpleGL
 {
+	class RenderStateDX11;
+
 	class RenderExecutor
 	{
 	public:
 		RenderExecutor();
 		~RenderExecutor();
-
-		void Execute();
+		
+		void Execute(RenderStateDX11* pRenderState);
 	};
-
 }

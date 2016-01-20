@@ -18,7 +18,7 @@ namespace SimpleGL
 		void SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY PrimitiveTopology);
 		void SetSamplerState(ID3D11SamplerState* pSamplerState);
 
-	protected:
+	public:
 		ComPtr<ID3D11DeviceContext>		m_DeviceContext;
 
 		ComPtr<ID3D11VertexShader>		m_VertexShader;
@@ -26,7 +26,10 @@ namespace SimpleGL
 
 		UINT							m_nStride = 0;
 		UINT							m_nOffset = 0;
+		UINT							m_nVertexSize = 0;
 		ComPtr<ID3D11Buffer>			m_VertexBuffer;
+
+		UINT							m_nIndexSize = 0;
 		ComPtr<ID3D11Buffer>			m_IndexBuffer;
 		ComPtr<ID3D11Buffer>			m_ConstantBuffer;
 
@@ -34,6 +37,11 @@ namespace SimpleGL
 
 		ComPtr<ID3D11SamplerState>		m_SamplerState;
 
-
+		enum DrawMethod
+		{
+			NONE,
+			Draw,
+			Draw_Index,
+		} m_eMethod = NONE;
 	};
 }
