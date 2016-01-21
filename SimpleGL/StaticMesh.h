@@ -1,4 +1,5 @@
 #pragma once
+#include "ConstantBufferBase.h"
 
 namespace SimpleGL
 {
@@ -62,5 +63,8 @@ namespace SimpleGL
 		ID3D11Buffer* ConstantBuffer;
 		ID3D11Buffer* PSConstantBuffer;
 		ID3D11SamplerState* SamplerLinear;
+
+		CBNeverChanges* cbNeverChanges;
+		ConstantBufferStruct* color;
 	};
 }
