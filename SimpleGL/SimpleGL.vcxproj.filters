@@ -90,6 +90,9 @@
     <ClInclude Include="RenderExecutor.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ConstantBufferBase.h">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="RenderExecutor.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantBufferBase.cpp">
+      <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

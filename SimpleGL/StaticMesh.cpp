@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "StaticMesh.h"
 #include "RHIDX11.h"
+#include "ConstantBufferBase.h"
+#include "RenderStateDX11.h"
 
 namespace SimpleGL
 {
@@ -35,13 +37,13 @@ namespace SimpleGL
 	void StaticMesh::Render()
 	{
 		XMMATRIX View;
-		CBNeverChanges cbNeverChanges;
+		CBNeverChanges* cbNeverChanges = new CBNeverChanges;
  		XMVECTOR Eye = XMVectorSet(0.0f, 0.0f, -6.0f, 0.0f);
  		XMVECTOR At = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
  		XMVECTOR Up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
  		View = XMMatrixLookAtLH(Eye, At, Up);
 		//View = XMMatrixIdentity();
-		cbNeverChanges.mView = XMMatrixTranspose(View);
+		cbNeverChanges->data.mView = XMMatrixTranspose(View);
 
 		INT width, height;
 		gRHI->GetWindowSize(width, height);
@@ -49,18 +51,24 @@ namespace SimpleGL
 		XMMATRIX Projection;
 		Projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, static_cast<float>(width / height), 0.001f, 1000.0f);
 		//Projection = XMMatrixIdentity();
-		cbNeverChanges.mProjection = XMMatrixTranspose(Projection);
+		cbNeverChanges->data.mProjection = XMMatrixTranspose(Projection);
 
 		XMMATRIX World;
 		World = XMMatrixIdentity();
-		cbNeverChanges.mWorld = XMMatrixTranspose(World);
+		cbNeverChanges->data.mWorld = XMMatrixTranspose(World);
 
-		gRHI->GetDeviceContext()->UpdateSubresource(ConstantBuffer, 0, nullptr, &cbNeverChanges, 0, 0);
+		gRHI->GetDeviceContext()->UpdateSubresource(ConstantBuffer, 0, nullptr, &cbNeverChanges->data, 0, 0);
 
 	
-		ConstantBufferStruct color;
-		color.vMeshColor = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
-		gRHI->GetDeviceContext()->UpdateSubresource(PSConstantBuffer, 0, nullptr, &color, 0, 0);
+		//ConstantBufferStruct color;
+		ConstantBufferStruct* color = new ConstantBufferStruct;
+		color->data.vMeshColor = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+		gRHI->GetDeviceContext()->UpdateSubresource(PSConstantBuffer, 0, nullptr, &color->data, 0, 0);
+
+
+		RenderStateDX11 state;
+		state.AddConstantBuffer(std::pair<ID3D11Buffer*, ConstantBufferBase*>(ConstantBuffer, cbNeverChanges));
+		state.AddConstantBuffer(std::pair<ID3D11Buffer*, ConstantBufferBase*>(PSConstantBuffer, color));
 
 		// CB Input
 		//////////////////////////////////////////////////////////////////////////
@@ -122,7 +130,7 @@ namespace SimpleGL
 		D3D11_BUFFER_DESC constantBufferDesc;
 		ZeroMemory(&constantBufferDesc, sizeof(constantBufferDesc));
 		constantBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-		constantBufferDesc.ByteWidth = sizeof(CBNeverChanges);
+		constantBufferDesc.ByteWidth = sizeof(CBNeverChanges::Data);
 		constantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 		constantBufferDesc.CPUAccessFlags = 0;
 		hr = gRHI->GetDevice()->CreateBuffer(&constantBufferDesc, nullptr, &ConstantBuffer);
@@ -130,7 +138,7 @@ namespace SimpleGL
 		D3D11_BUFFER_DESC PSconstantBufferDesc;
 		ZeroMemory(&PSconstantBufferDesc, sizeof(constantBufferDesc));
 		PSconstantBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-		PSconstantBufferDesc.ByteWidth = sizeof(ConstantBufferStruct);
+		PSconstantBufferDesc.ByteWidth = sizeof(ConstantBufferStruct::Data);
 		PSconstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 		PSconstantBufferDesc.CPUAccessFlags = 0;
 		hr = gRHI->GetDevice()->CreateBuffer(&PSconstantBufferDesc, nullptr, &PSConstantBuffer);

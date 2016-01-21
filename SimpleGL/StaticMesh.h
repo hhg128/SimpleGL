@@ -30,17 +30,17 @@ namespace SimpleGL
 
 	};
 
-	struct CBNeverChanges
-	{
-		XMMATRIX mView;
-		XMMATRIX mProjection;
-		XMMATRIX mWorld;
-	};
+	//struct CBNeverChanges
+	//{
+	//	XMMATRIX mView;
+	//	XMMATRIX mProjection;
+	//	XMMATRIX mWorld;
+	//};
 
-	struct ConstantBufferStruct
-	{
-		XMFLOAT4 vMeshColor;
-	};
+	//struct ConstantBufferStruct
+	//{
+	//	XMFLOAT4 vMeshColor;
+	//};
 
 	class StaticMesh
 	{

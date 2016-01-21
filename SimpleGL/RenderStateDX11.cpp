@@ -49,4 +49,9 @@ namespace SimpleGL
 		m_SamplerState = pSamplerState;
 	}
 
+	void RenderStateDX11::AddConstantBuffer(std::pair<ID3D11Buffer*, ConstantBufferBase*> buffer)
+	{
+		m_ConstantBufferContainer.insert(buffer);
+	}
+
 }
