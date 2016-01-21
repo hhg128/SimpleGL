@@ -185,7 +185,7 @@ namespace SimpleGL
 		HRESULT hr = S_OK;
 
 		ID3DBlob* pVSBlob = nullptr;
-		hr = CompileShaderFromFile(L"Shader/basic.fx", "VS", "vs_4_0", &pVSBlob);
+		hr = CompileShaderFromFile(L"Shader/basic_vs.hlsl", "VS", "vs_4_0", &pVSBlob);
 		if (FAILED(hr))
 		{
 			MessageBox(nullptr,
@@ -216,7 +216,7 @@ namespace SimpleGL
 		HRESULT hr = S_OK;
 
 		ID3DBlob* pPSBlob = nullptr;
-		hr = CompileShaderFromFile(L"Shader/basic.fx", "PS", "ps_4_0", &pPSBlob);
+		hr = CompileShaderFromFile(L"Shader/basic_ps.hlsl", "PS", "ps_4_0", &pPSBlob);
 		if (FAILED(hr))
 		{
 			MessageBox(nullptr,
