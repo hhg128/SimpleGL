@@ -24,15 +24,16 @@ namespace SimpleGL
 		gRHI->GetDeviceContext()->IASetVertexBuffers(0, 1, &pRenderState->m_VertexBuffer, &pRenderState->m_nStride, &pRenderState->m_nOffset);
 
 		// Set index buffer
-		gRHI->GetDeviceContext()->IASetIndexBuffer(pRenderState->m_IndexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+		gRHI->GetDeviceContext()->IASetIndexBuffer(pRenderState->m_IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
 		// Set primitive topology
 		gRHI->GetDeviceContext()->IASetPrimitiveTopology(pRenderState->m_PrimitiveTopology);
 
-		// Set Shader Params
-		struct None {/* 앞으로 채워 넣을 것*/} none;
-		gRHI->GetDeviceContext()->UpdateSubresource(pRenderState->m_ConstantBuffer.Get(), 0, nullptr, &none, 0, 0);
-
+		//gRHI->GetDeviceContext()->UpdateSubresource(pRenderState->m_ConstantBuffer, 0, nullptr, &cbNeverChanges.data, 0, 0);
+		//D3D11_MAPPED_SUBRESOURCE mappedResource;
+		//gRHI->GetDeviceContext()->Map(pRenderState->m_ConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+		//memcpy(mappedResource.pData, &pRenderState->m_ConstantBufferRaw, sizeof(CBNeverChanges::Data));
+		//gRHI->GetDeviceContext()->Unmap(pRenderState->m_ConstantBuffer, 0);
 
 		gRHI->ClearRenterTargetView();
 
@@ -41,8 +42,8 @@ namespace SimpleGL
 		gRHI->GetDeviceContext()->VSSetConstantBuffers(0, 1, &pRenderState->m_ConstantBuffer);
 
 		gRHI->GetDeviceContext()->PSSetShader(gRHI->GetPixelShader(), nullptr, 0);
-		gRHI->GetDeviceContext()->PSSetConstantBuffers(1, 1, &pRenderState->m_ConstantBuffer);
-		gRHI->GetDeviceContext()->PSSetShaderResources(0, 1, nullptr);
+		//gRHI->GetDeviceContext()->PSSetConstantBuffers(1, 1, &pRenderState->m_ConstantBuffer);
+		//gRHI->GetDeviceContext()->PSSetShaderResources(0, 1, nullptr);
 		gRHI->GetDeviceContext()->PSSetSamplers(0, 1, &pRenderState->m_SamplerState);
 
 		// 더 나은 방법이 있을텐데 찾아보자

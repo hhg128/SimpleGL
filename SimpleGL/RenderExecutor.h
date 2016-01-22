@@ -10,6 +10,6 @@ namespace SimpleGL
 		RenderExecutor();
 		~RenderExecutor();
 		
-		void Execute(RenderStateDX11* pRenderState);
+		static void Execute(RenderStateDX11* pRenderState);
 	};
 }

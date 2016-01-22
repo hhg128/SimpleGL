@@ -1,5 +1,6 @@
 #pragma once
 #include "ShaderBase.h"
+#include "ShaderGenerator.h"
 
 namespace SimpleGL
 {
@@ -9,8 +10,6 @@ namespace SimpleGL
 	public:
 		VertexShader();
 		virtual ~VertexShader();
-
-		void Init();
 
 	private:
 		ComPtr<ID3D11VertexShader>     m_VertexShader;

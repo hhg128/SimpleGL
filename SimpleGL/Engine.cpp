@@ -52,6 +52,8 @@ namespace SimpleGL
 			m_pObjectManager->Tick();
 			m_pObjectManager->Render();
 
+			gRHI->Draw();
+
 			gRHI->Present();
 		}
 	}

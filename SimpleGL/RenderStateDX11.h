@@ -30,11 +30,13 @@ namespace SimpleGL
 		UINT							m_nStride = 0;
 		UINT							m_nOffset = 0;
 		UINT							m_nVertexSize = 0;
-		ComPtr<ID3D11Buffer>			m_VertexBuffer;
+		ID3D11Buffer*					m_VertexBuffer;
 
 		UINT							m_nIndexSize = 0;
-		ComPtr<ID3D11Buffer>			m_IndexBuffer;
-		ComPtr<ID3D11Buffer>			m_ConstantBuffer;
+		ID3D11Buffer*					m_IndexBuffer;
+		ID3D11Buffer*					m_ConstantBuffer;
+		UINT							m_ConstantBufferSize;
+		unsigned char*					m_ConstantBufferRaw;
 
 		struct ConstantBufferState
 		{

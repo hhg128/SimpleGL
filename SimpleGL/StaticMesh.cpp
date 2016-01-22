@@ -99,7 +99,29 @@ namespace SimpleGL
 
 	void StaticMesh::Tick()
 	{
+		XMMATRIX View;
+		XMVECTOR Eye = XMVectorSet(0.0f, 0.0f, -6.0f, 0.0f);
+		XMVECTOR At = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
+		XMVECTOR Up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+		View = XMMatrixLookAtLH(Eye, At, Up);
+		cbNeverChanges->data.mView = XMMatrixTranspose(View);
 
+		INT width, height;
+		gRHI->GetWindowSize(width, height);
+
+		XMMATRIX Projection;
+		Projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, static_cast<float>(width / height), 0.001f, 1000.0f);
+		cbNeverChanges->data.mProjection = XMMatrixTranspose(Projection);
+
+		XMMATRIX World;
+		World = XMMatrixIdentity();
+		cbNeverChanges->data.mWorld = XMMatrixTranspose(World);
+
+
+		D3D11_MAPPED_SUBRESOURCE mappedResource;
+		gRHI->GetDeviceContext()->Map(ConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+		memcpy(mappedResource.pData, &cbNeverChanges->data, sizeof(CBNeverChanges::Data));
+		gRHI->GetDeviceContext()->Unmap(ConstantBuffer, 0);
 	}
 
 	void StaticMesh::PrepareRendering()
@@ -171,10 +193,20 @@ namespace SimpleGL
 		m_pRenderState->SetVertexBuffer(VertexBuffer, sizeof(StaticMeshVertex::Vertex), 0);
 		m_pRenderState->SetIndexBuffer(IndexBuffer);
 
-		m_pRenderState->AddConstantBuffer(ConstantBuffer);
-		m_pRenderState->AddConstantBuffer(PSConstantBuffer);
+		//m_pRenderState->AddConstantBuffer(ConstantBuffer);
+		//m_pRenderState->AddConstantBuffer(PSConstantBuffer);
+		m_pRenderState->SetConstantBuffer(ConstantBuffer);
+		m_pRenderState->m_ConstantBufferRaw = (unsigned char*)&cbNeverChanges->data;
+		m_pRenderState->m_ConstantBufferSize = sizeof(CBNeverChanges::Data);
 
 		m_pRenderState->SetSamplerState(SamplerLinear);
+		m_pRenderState->SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		m_pRenderState->SetVertexShader(gRHI->GetVertexShader());
+		m_pRenderState->SetPixelShader(gRHI->GetPixelShader());
+
+		m_pRenderState->m_eMethod = RenderStateDX11::DrawMethod::Draw_Index;
+
+		m_pRenderState->m_nIndexSize = static_cast<UINT>(Indices.size());
 	}
 
 }

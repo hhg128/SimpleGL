@@ -53,7 +53,7 @@ namespace SimpleGL
 
 	void TriangleModel::Render()
 	{
-		Mesh->Render();
+		//Mesh->Render();
 	}
 
 	CubeModel::CubeModel()

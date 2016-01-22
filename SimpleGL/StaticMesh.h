@@ -58,7 +58,7 @@ namespace SimpleGL
 		void Render();
 		void Tick();
 
-	private:
+	public:
 		std::vector<StaticMeshVertex> Vertices;
 		std::vector<unsigned int> Indices;
 		ID3D11Buffer* VertexBuffer;

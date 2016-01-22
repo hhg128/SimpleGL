@@ -2,6 +2,8 @@
 #include "RHIDX11.h"
 #include "WindowsWindow.h"
 #include "RenderStateDX11.h"
+#include "ShaderGenerator.h"
+#include "RenderExecutor.h"
 
 // Library imports
 #pragma comment( lib, "d3d11.lib" )
@@ -27,6 +29,11 @@ namespace SimpleGL
 		if (gRHI == nullptr)
 		{
 			gRHI = new RHIDX11;
+		}
+
+		if (gShaderGenerator == nullptr)
+		{
+			gShaderGenerator = new ShaderGenerator;
 		}
 	}
 
@@ -314,6 +321,11 @@ namespace SimpleGL
 
 	void RHIDX11::Draw()
 	{
+		for (INT i = 0; i < m_pRenderStateList.size(); ++i)
+		{
+			auto renderState = m_pRenderStateList.at(i);
+			RenderExecutor::Execute(renderState);
+		}
 	}
 
 }
