@@ -5,6 +5,8 @@ namespace SimpleGL
 {
 	using namespace DirectX;
 
+	class RenderStateDX11;
+
 	class StaticMeshVertex
 	{
 	public:
@@ -54,6 +56,7 @@ namespace SimpleGL
 
 		void PrepareRendering();
 		void Render();
+		void Tick();
 
 	private:
 		std::vector<StaticMeshVertex> Vertices;
@@ -66,5 +69,7 @@ namespace SimpleGL
 
 		CBNeverChanges* cbNeverChanges;
 		ConstantBufferStruct* color;
+
+		RenderStateDX11* m_pRenderState;
 	};
 }

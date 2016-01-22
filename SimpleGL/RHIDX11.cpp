@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "RHIDX11.h"
 #include "WindowsWindow.h"
+#include "RenderStateDX11.h"
 
 // Library imports
 #pragma comment( lib, "d3d11.lib" )
@@ -27,6 +28,15 @@ namespace SimpleGL
 		{
 			gRHI = new RHIDX11;
 		}
+	}
+
+	RenderStateDX11* RHIDX11::CreateRenderState()
+	{
+		RenderStateDX11* pRenderState = new RenderStateDX11;
+		
+		m_pRenderStateList.push_back(pRenderState);
+
+		return pRenderState;
 	}
 
 	void RHIDX11::Initialize(WindowsWindow* pWindow)

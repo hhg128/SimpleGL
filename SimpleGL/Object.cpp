@@ -28,7 +28,7 @@ namespace SimpleGL
 
 	void Object::Tick()
 	{
-
+		Model->Tick();
 	}
 
 	void Object::Render()

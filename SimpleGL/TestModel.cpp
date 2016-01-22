@@ -46,6 +46,11 @@ namespace SimpleGL
 		delete Mesh;
 	}
 
+	void TriangleModel::Tick()
+	{
+		Mesh->Tick();
+	}
+
 	void TriangleModel::Render()
 	{
 		Mesh->Render();

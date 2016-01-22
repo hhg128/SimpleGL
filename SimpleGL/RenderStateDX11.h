@@ -18,7 +18,8 @@ namespace SimpleGL
 		void SetConstantBuffer(ID3D11Buffer* pConstantBuffer);
 		void SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY PrimitiveTopology);
 		void SetSamplerState(ID3D11SamplerState* pSamplerState);
-		void AddConstantBuffer(std::pair<ID3D11Buffer*, ConstantBufferBase*> buffer);
+
+		void AddConstantBuffer(ID3D11Buffer* Buffer);
 
 	public:
 		ComPtr<ID3D11DeviceContext>		m_DeviceContext;
@@ -35,7 +36,15 @@ namespace SimpleGL
 		ComPtr<ID3D11Buffer>			m_IndexBuffer;
 		ComPtr<ID3D11Buffer>			m_ConstantBuffer;
 
-		std::map<ID3D11Buffer*, ConstantBufferBase*> m_ConstantBufferContainer;
+		struct ConstantBufferState
+		{
+			ID3D11Buffer* Buffer;
+			UINT FirstConstant;
+			UINT NumConstants;
+		};
+		std::vector<ConstantBufferState> m_ConstantBufferList;
+
+
 
 		D3D11_PRIMITIVE_TOPOLOGY		m_PrimitiveTopology;
 

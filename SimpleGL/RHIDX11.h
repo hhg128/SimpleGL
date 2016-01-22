@@ -3,6 +3,7 @@
 namespace SimpleGL
 {
 	class WindowsWindow;
+	class RenderStateDX11;
 
 	class RHIDX11
 	{
@@ -24,6 +25,8 @@ namespace SimpleGL
 		void Present();
 
 		static void Create();
+
+		RenderStateDX11* CreateRenderState();
 
 		void CreateVertexShader(D3D11_INPUT_ELEMENT_DESC* pLayout, UINT numElements);
 		void CreatePixelShader();
@@ -57,6 +60,8 @@ namespace SimpleGL
 		ID3D11InputLayout*      m_pVertexLayout;
 
 		WindowsWindow*	m_pWindow;
+
+		std::vector<RenderStateDX11*> m_pRenderStateList;
 	};
 
 	extern RHIDX11* gRHI;

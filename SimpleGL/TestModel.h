@@ -15,6 +15,7 @@ namespace SimpleGL
 		void Initialize();
 		void Finalize();
 
+		void Tick();
 		void Render();
 
 	private:

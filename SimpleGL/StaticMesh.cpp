@@ -19,9 +19,7 @@ namespace SimpleGL
 		cbNeverChanges = new CBNeverChanges;
 		color = new ConstantBufferStruct;
 
-		RenderStateDX11 state;
-		state.AddConstantBuffer(std::pair<ID3D11Buffer*, ConstantBufferBase*>(ConstantBuffer, cbNeverChanges));
-		state.AddConstantBuffer(std::pair<ID3D11Buffer*, ConstantBufferBase*>(PSConstantBuffer, color));
+		m_pRenderState = gRHI->CreateRenderState();
 	}
 
 
@@ -99,6 +97,11 @@ namespace SimpleGL
 		gRHI->GetDeviceContext()->DrawIndexed(static_cast<UINT>(Indices.size()), 0, 0);
 	}
 
+	void StaticMesh::Tick()
+	{
+
+	}
+
 	void StaticMesh::PrepareRendering()
 	{
 		/*
@@ -160,6 +163,18 @@ namespace SimpleGL
 		sampDesc.MinLOD = 0;
 		sampDesc.MaxLOD = D3D11_FLOAT32_MAX;
 		gRHI->GetDevice()->CreateSamplerState(&sampDesc, &SamplerLinear);
+
+
+		//////////////////////////////////////////////////////////////////////////
+		// RenderState
+
+		m_pRenderState->SetVertexBuffer(VertexBuffer, sizeof(StaticMeshVertex::Vertex), 0);
+		m_pRenderState->SetIndexBuffer(IndexBuffer);
+
+		m_pRenderState->AddConstantBuffer(ConstantBuffer);
+		m_pRenderState->AddConstantBuffer(PSConstantBuffer);
+
+		m_pRenderState->SetSamplerState(SamplerLinear);
 	}
 
 }
