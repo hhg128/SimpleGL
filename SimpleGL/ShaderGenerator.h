@@ -11,7 +11,7 @@ namespace SimpleGL
 		ShaderGenerator();
 		~ShaderGenerator();
 
-		void RegisterVertexShader(TCHAR* name, VertexShader* pVertexShader);
+		static void RegisterVertexShader(TCHAR* name, VertexShader* pVertexShader);
 
 	private:
 		std::map<TCHAR*, VertexShader*> VertexShaderMap;
@@ -19,16 +19,17 @@ namespace SimpleGL
 
 	extern ShaderGenerator* gShaderGenerator;
 
-#define REGISTR_VERTEX_SHADER(name, type)\
-	class ShaderRegisterClass_##name\
-	{\
-		public:\
-			ShaderRegisterClass_##name()\
-			{\
-				type* vertexshader = new type;\
-				TCHAR* vertexname = TEXT(#name);\
-				gShaderGenerator->RegisterVertexShader(vertexname, vertexshader);\
-			}\
-	};\
-	static ShaderRegisterClass_##name registershader;
+	template<typename type>
+	class ShaderRegisterClass
+	{
+	public:
+		ShaderRegisterClass(TCHAR* name)
+		{
+			type* vertexShader = new type;
+			ShaderGenerator::RegisterVertexShader(name, vertexShader);
+		}
+	};
+
+#define REGISTR_VERTEX_SHADER(type)\
+	ShaderRegisterClass<type> _shader_register_##type(TEXT(#type));
 }

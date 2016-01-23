@@ -12,5 +12,5 @@ namespace SimpleGL
 		void Register();
 	};
 
-	//REGISTR_VERTEX_SHADER(BasicVertexShader, BasicVertexShader);
+	REGISTR_VERTEX_SHADER(BasicVertexShader);
 }
