@@ -46,7 +46,7 @@ namespace SimpleGL
 		void SetViewport();
 		void ApplyRenderTargetView();
 
-		HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
+		HRESULT CompileShaderFromFile(std::wstring szFileName, std::wstring szEntryPoint, std::wstring szShaderModel, ID3DBlob** ppBlobOut);
 
 	protected:
 		Microsoft::WRL::ComPtr<ID3D11Device>	m_Device;

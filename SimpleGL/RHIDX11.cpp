@@ -164,7 +164,7 @@ namespace SimpleGL
 		m_SwapChain->Present(SyncInterval, PresentFlags);
 	}
 
-	HRESULT RHIDX11::CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut)
+	HRESULT RHIDX11::CompileShaderFromFile(std::wstring szFileName, std::wstring szEntryPoint, std::wstring szShaderModel, ID3DBlob** ppBlobOut)
 	{
 		HRESULT hr = S_OK;
 
@@ -179,9 +179,14 @@ namespace SimpleGL
 		// Disable optimizations to further improve shader debugging
 		dwShaderFlags |= D3DCOMPILE_SKIP_OPTIMIZATION;
 #endif
+		typedef std::codecvt_utf8<wchar_t> convert_type;
+		std::wstring_convert<convert_type, wchar_t> converter;
+
+		std::string entrypoint = converter.to_bytes(szEntryPoint);
+		std::string shadermodel = converter.to_bytes(szShaderModel);
 
 		ID3DBlob* pErrorBlob = nullptr;
-		hr = D3DCompileFromFile(szFileName, nullptr, nullptr, szEntryPoint, szShaderModel,
+		hr = D3DCompileFromFile(szFileName.c_str(), nullptr, nullptr, entrypoint.c_str(), shadermodel.c_str(),
 			dwShaderFlags, 0, ppBlobOut, &pErrorBlob);
 		if (FAILED(hr))
 		{
@@ -202,11 +207,11 @@ namespace SimpleGL
 		HRESULT hr = S_OK;
 
 		ID3DBlob* pVSBlob = nullptr;
-		hr = CompileShaderFromFile(L"Shader/basic_vs.hlsl", "VS", "vs_4_0", &pVSBlob);
+		hr = CompileShaderFromFile(TEXT("Shader/basic_vs.hlsl"), TEXT("VS"), TEXT("vs_4_0"), &pVSBlob);
 		if (FAILED(hr))
 		{
 			MessageBox(nullptr,
-				L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK);
+				TEXT("The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file."), TEXT("Error"), MB_OK);
 			return;
 		}
 
@@ -233,11 +238,11 @@ namespace SimpleGL
 		HRESULT hr = S_OK;
 
 		ID3DBlob* pPSBlob = nullptr;
-		hr = CompileShaderFromFile(L"Shader/basic_ps.hlsl", "PS", "ps_4_0", &pPSBlob);
+		hr = CompileShaderFromFile(TEXT("Shader/basic_ps.hlsl"), TEXT("PS"), TEXT("ps_4_0"), &pPSBlob);
 		if (FAILED(hr))
 		{
 			MessageBox(nullptr,
-				L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK);
+				TEXT("The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file."), TEXT("Error"), MB_OK);
 			return;
 		}
 

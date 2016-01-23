@@ -24,6 +24,10 @@
 #include <vector>
 #include <map>
 
+#include <locale>         // std::wstring_convert
+#include <codecvt>        // std::codecvt_utf8
+#include <cstdint>        // std::uint_least32_t
+
 // DirectX includes
 #include <d3d11_1.h>
 #include <DXGI.h>
