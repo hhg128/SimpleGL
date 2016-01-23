@@ -51,6 +51,7 @@ namespace SimpleGL
 		m_pWindow = pWindow;
 
 		CreateDevice();
+		CreateDeferredContext();
 		CreateSwapChain();
 		CreateRenderTargetView();
 		CreateDepthStencilView();
@@ -119,6 +120,17 @@ namespace SimpleGL
 
 		HRESULT hr = S_OK;
 		hr = dxgiFactory->CreateSwapChain(m_Device.Get(), &SwapChainDesc, m_SwapChain.GetAddressOf());
+	}
+
+	void RHIDX11::CreateDeferredContext()
+	{
+		HRESULT hr = S_OK;
+		hr = m_Device->CreateDeferredContext(0, &m_DeviceDeferredContext);
+
+		if (FAILED(hr))
+		{
+			assert(hr);
+		}
 	}
 
 	void RHIDX11::SetViewport()
