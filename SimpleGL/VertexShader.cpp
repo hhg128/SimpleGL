@@ -12,4 +12,9 @@ namespace SimpleGL
 	{
 	}
 
+	void VertexShader::Compile()
+	{
+
+	}
+
 }

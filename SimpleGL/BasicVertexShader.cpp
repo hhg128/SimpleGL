@@ -12,9 +12,4 @@ namespace SimpleGL
 	BasicVertexShader::~BasicVertexShader()
 	{
 	}
-
-	void BasicVertexShader::Register()
-	{
-
-	}
 }

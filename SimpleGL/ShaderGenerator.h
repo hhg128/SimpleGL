@@ -1,4 +1,5 @@
 #pragma once
+#include "ShaderEnum.h"
 
 namespace SimpleGL
 {
@@ -11,10 +12,17 @@ namespace SimpleGL
 		ShaderGenerator();
 		~ShaderGenerator();
 
-		static void RegisterVertexShader(TCHAR* name, VertexShader* pVertexShader);
+		void Initialize();
 
-	private:
-		std::map<TCHAR*, VertexShader*> VertexShaderMap;
+		static void RegisterVertexShader(TCHAR* name, VertexShader* pVertexShader, ShaderEnum id);
+
+	private:		
+		struct VertexShaderItem
+		{	
+			TCHAR* name;
+			VertexShader* vertexshader;
+		};
+		static VertexShaderItem VertexShaderMap[ShaderEnum_Max];
 	};
 
 	extern ShaderGenerator* gShaderGenerator;
@@ -23,13 +31,13 @@ namespace SimpleGL
 	class ShaderRegisterClass
 	{
 	public:
-		ShaderRegisterClass(TCHAR* name)
+		ShaderRegisterClass(TCHAR* name, ShaderEnum id)
 		{
 			type* vertexShader = new type;
-			ShaderGenerator::RegisterVertexShader(name, vertexShader);
+			ShaderGenerator::RegisterVertexShader(name, vertexShader, id);
 		}
 	};
 
 #define REGISTR_VERTEX_SHADER(type)\
-	ShaderRegisterClass<type> _shader_register_##type(TEXT(#type));
+	ShaderRegisterClass<type> _shader_register_##type(TEXT(#type), ShaderEnum::##type);
 }

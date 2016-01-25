@@ -8,8 +8,6 @@ namespace SimpleGL
 	public:
 		BasicVertexShader();
 		virtual ~BasicVertexShader();
-
-		void Register();
 	};
 
 	REGISTR_VERTEX_SHADER(BasicVertexShader);

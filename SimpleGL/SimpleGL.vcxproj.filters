@@ -99,6 +99,9 @@
     <ClInclude Include="ShaderGenerator.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderEnum.h">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

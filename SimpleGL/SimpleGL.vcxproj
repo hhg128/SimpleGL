@@ -159,6 +159,7 @@
     <ClInclude Include="RHIDX11.h" />
     <ClInclude Include="RHIDX12.h" />
     <ClInclude Include="ShaderBase.h" />
+    <ClInclude Include="ShaderEnum.h" />
     <ClInclude Include="ShaderGenerator.h" />
     <ClInclude Include="SimpleGL.h" />
     <ClInclude Include="SkeletalMesh.h" />

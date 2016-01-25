@@ -34,6 +34,7 @@ namespace SimpleGL
 		if (gShaderGenerator == nullptr)
 		{
 			gShaderGenerator = new ShaderGenerator;
+			gShaderGenerator->Initialize();
 		}
 	}
 

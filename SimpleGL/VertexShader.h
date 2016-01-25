@@ -11,6 +11,8 @@ namespace SimpleGL
 		VertexShader();
 		virtual ~VertexShader();
 
+		virtual void Compile();
+
 	private:
 		ComPtr<ID3D11VertexShader>     m_VertexShader;
 	};
