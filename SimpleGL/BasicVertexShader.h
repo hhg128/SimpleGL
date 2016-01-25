@@ -8,6 +8,11 @@ namespace SimpleGL
 	public:
 		BasicVertexShader();
 		virtual ~BasicVertexShader();
+
+		virtual void Compile() override;
+
+	private:
+		ID3D11VertexShader*     m_pVertexShader;
 	};
 
 	REGISTR_VERTEX_SHADER(BasicVertexShader);

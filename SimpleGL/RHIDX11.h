@@ -39,6 +39,8 @@ namespace SimpleGL
 
 		void Draw();
 
+		HRESULT CompileShaderFromFile(std::wstring szFileName, std::wstring szEntryPoint, std::wstring szShaderModel, ID3DBlob** ppBlobOut);
+
 	protected:
 		void CreateDevice();
 		void CreateSwapChain();
@@ -48,7 +50,7 @@ namespace SimpleGL
 		void SetViewport();
 		void ApplyRenderTargetView();
 
-		HRESULT CompileShaderFromFile(std::wstring szFileName, std::wstring szEntryPoint, std::wstring szShaderModel, ID3DBlob** ppBlobOut);
+		
 
 	protected:
 		Microsoft::WRL::ComPtr<ID3D11Device>	m_Device;
