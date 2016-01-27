@@ -34,15 +34,17 @@ namespace SimpleGL
 			return;
 		}
 
-		//hr = gRHI->GetDevice()->CreateInputLayout(pLayout, numElements, pVSBlob->GetBufferPointer(),
-		//	pVSBlob->GetBufferSize(), &m_pVertexLayout);
-		//pVSBlob->Release();
-		//if (FAILED(hr))
-		//{
-		//	assert(hr);
-		//}
+		D3D11_INPUT_ELEMENT_DESC* pLayout = nullptr; 
+		UINT numElements = 0;
+		hr = gRHI->GetDevice()->CreateInputLayout(pLayout, numElements, pVSBlob->GetBufferPointer(),
+			pVSBlob->GetBufferSize(), &m_pVertexLayout);
+		pVSBlob->Release();
+		if (FAILED(hr))
+		{
+			assert(hr);
+		}
 
-		//gRHI->GetDeviceContext()->IASetInputLayout(m_pVertexLayout);
+		gRHI->GetDeviceContext()->IASetInputLayout(m_pVertexLayout);
 	}
 
 }
