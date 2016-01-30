@@ -102,6 +102,9 @@
     <ClInclude Include="ShaderEnum.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="BasicPixelShader.h">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -171,6 +174,9 @@
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="ShaderGenerator.cpp">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicPixelShader.cpp">
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
   </ItemGroup>

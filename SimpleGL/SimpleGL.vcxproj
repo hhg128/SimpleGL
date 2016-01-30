@@ -144,6 +144,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasicPixelShader.h" />
     <ClInclude Include="BasicVertexShader.h" />
     <ClInclude Include="ConstantBufferBase.h" />
     <ClInclude Include="Engine.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BasicPixelShader.cpp" />
     <ClCompile Include="BasicVertexShader.cpp" />
     <ClCompile Include="ConstantBufferBase.cpp" />
     <ClCompile Include="Engine.cpp" />

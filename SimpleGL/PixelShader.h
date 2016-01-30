@@ -1,5 +1,6 @@
 #pragma once
 #include "ShaderBase.h"
+#include "ShaderGenerator.h"
 
 namespace SimpleGL
 {
@@ -8,5 +9,7 @@ namespace SimpleGL
 	public:
 		PixelShader();
 		virtual ~PixelShader();
+
+		virtual void Compile() {};
 	};
 }

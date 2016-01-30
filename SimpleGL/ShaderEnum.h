@@ -2,5 +2,6 @@
 enum ShaderEnum
 {
 	BasicVertexShader,
+	BasicPixelShader,
 	ShaderEnum_Max,
 };

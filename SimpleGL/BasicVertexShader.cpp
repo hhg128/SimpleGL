@@ -23,7 +23,7 @@ namespace SimpleGL
 		if (FAILED(hr))
 		{
 			MessageBox(nullptr,
-				TEXT("The hlsl file cannot be compiled.  Please run this executable from the directory that contains the FX file."), TEXT("Error"), MB_OK);
+				TEXT("The hlsl file cannot be compiled."), TEXT("Error"), MB_OK);
 			return;
 		}
 
@@ -34,9 +34,12 @@ namespace SimpleGL
 			return;
 		}
 
-		D3D11_INPUT_ELEMENT_DESC* pLayout = nullptr; 
-		UINT numElements = 0;
-		hr = gRHI->GetDevice()->CreateInputLayout(pLayout, numElements, pVSBlob->GetBufferPointer(),
+		D3D11_INPUT_ELEMENT_DESC Elements[2] = {
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+		};
+
+		hr = gRHI->GetDevice()->CreateInputLayout(Elements, sizeof(Elements)/sizeof(Elements[0]), pVSBlob->GetBufferPointer(),
 			pVSBlob->GetBufferSize(), &m_pVertexLayout);
 		pVSBlob->Release();
 		if (FAILED(hr))

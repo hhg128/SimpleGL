@@ -6,6 +6,7 @@ namespace SimpleGL
 {
 	ShaderGenerator* gShaderGenerator = nullptr;
 	ShaderGenerator::VertexShaderItem ShaderGenerator::VertexShaderMap[ShaderEnum_Max];
+	ShaderGenerator::PixelShaderItem ShaderGenerator::PixelShaderMap[ShaderEnum_Max];
 
 	ShaderGenerator::ShaderGenerator()
 	{
@@ -28,6 +29,12 @@ namespace SimpleGL
 	{
 		VertexShaderItem item{name, pVertexShader};
 		VertexShaderMap[id] = item;
+	}
+
+	void ShaderGenerator::RegisterPixelShader(TCHAR* name, PixelShader* pVertexShader, ShaderEnum id)
+	{
+		PixelShaderItem item{ name, pVertexShader };
+		PixelShaderMap[id] = item;
 	}
 
 }
