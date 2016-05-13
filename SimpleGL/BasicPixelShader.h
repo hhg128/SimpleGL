@@ -12,5 +12,5 @@ namespace SimpleGL
 		virtual void Compile() override;
 	};
 
-	REGISTR_PIXEL_SHADER(BasicPixelShader);
+	//REGISTR_PIXEL_SHADER(BasicPixelShader);
 }

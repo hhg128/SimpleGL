@@ -16,5 +16,5 @@ namespace SimpleGL
 		ID3D11InputLayout*      m_pVertexLayout;
 	};
 
-	REGISTR_VERTEX_SHADER(BasicVertexShader);
+	//REGISTR_VERTEX_SHADER(BasicVertexShader);
 }

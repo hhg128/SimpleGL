@@ -81,9 +81,6 @@
     <ClInclude Include="PixelShader.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderBase.h">
-      <Filter>소스 파일\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="RenderStateDX11.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
@@ -103,6 +100,12 @@
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="BasicPixelShader.h">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="IShader.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
@@ -155,9 +158,6 @@
     <ClCompile Include="PixelShader.cpp">
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderBase.cpp">
-      <Filter>소스 파일\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="VertexShader.cpp">
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
@@ -177,6 +177,12 @@
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="BasicPixelShader.cpp">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>소스 파일\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="IShader.cpp">
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
   </ItemGroup>

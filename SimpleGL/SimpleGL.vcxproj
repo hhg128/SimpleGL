@@ -159,9 +159,10 @@
     <ClInclude Include="ResourceView.h" />
     <ClInclude Include="RHIDX11.h" />
     <ClInclude Include="RHIDX12.h" />
-    <ClInclude Include="ShaderBase.h" />
+    <ClInclude Include="IShader.h" />
     <ClInclude Include="ShaderEnum.h" />
     <ClInclude Include="ShaderGenerator.h" />
+    <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="SimpleGL.h" />
     <ClInclude Include="SkeletalMesh.h" />
     <ClInclude Include="StaticMesh.h" />
@@ -187,8 +188,9 @@
     <ClCompile Include="ResourceView.cpp" />
     <ClCompile Include="RHIDX11.cpp" />
     <ClCompile Include="RHIDX12.cpp" />
-    <ClCompile Include="ShaderBase.cpp" />
+    <ClCompile Include="IShader.cpp" />
     <ClCompile Include="ShaderGenerator.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="SimpleGL.cpp" />
     <ClCompile Include="SkeletalMesh.cpp" />
     <ClCompile Include="StaticMesh.cpp" />

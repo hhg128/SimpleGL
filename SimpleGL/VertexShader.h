@@ -1,11 +1,11 @@
 #pragma once
-#include "ShaderBase.h"
+#include "IShader.h"
 #include "ShaderGenerator.h"
 
 namespace SimpleGL
 {
 	using namespace Microsoft::WRL;
-	class VertexShader : public ShaderBase
+	class VertexShader : public IShader
 	{
 	public:
 		VertexShader();
@@ -13,7 +13,16 @@ namespace SimpleGL
 
 		virtual void Compile();
 
+		virtual std::wstring GetShaderName() override {
+			return shaderName;
+		}
+
+		virtual ShaderType GetShaderType() override {
+			return VERTEX_SHADER;
+		}
+
 	private:
 		ComPtr<ID3D11VertexShader>     m_VertexShader;
+		std::wstring  shaderName;
 	};
 }

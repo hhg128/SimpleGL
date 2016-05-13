@@ -31,11 +31,11 @@ namespace SimpleGL
 			gRHI = new RHIDX11;
 		}
 
-		if (gShaderGenerator == nullptr)
-		{
-			gShaderGenerator = new ShaderGenerator;
-			gShaderGenerator->Initialize();
-		}
+		//if (gShaderGenerator == nullptr)
+		//{
+		//	gShaderGenerator = new ShaderGenerator;
+		//	gShaderGenerator->Initialize();
+		//}
 	}
 
 	RenderStateDX11* RHIDX11::CreateRenderState()

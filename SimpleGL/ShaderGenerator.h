@@ -33,33 +33,33 @@ namespace SimpleGL
 		static PixelShaderItem PixelShaderMap[ShaderEnum_Max];
 	};
 
-	extern ShaderGenerator* gShaderGenerator;
-
-	template<typename type>
-	class VShaderRegisterClass
-	{
-	public:
-		VShaderRegisterClass(TCHAR* name, ShaderEnum id)
-		{
-			type* vertexShader = new type;
-			ShaderGenerator::RegisterVertexShader(name, vertexShader, id);
-		}
-	};
-
-	template<typename type>
-	class PShaderRegisterClass
-	{
-	public:
-		PShaderRegisterClass(TCHAR* name, ShaderEnum id)
-		{
-			type* vertexShader = new type;
-			ShaderGenerator::RegisterPixelShader(name, vertexShader, id);
-		}
-	};
-
-#define REGISTR_VERTEX_SHADER(type)\
-	VShaderRegisterClass<type> _shader_register_##type(TEXT(#type), ShaderEnum::##type);
-
-#define REGISTR_PIXEL_SHADER(type)\
-	PShaderRegisterClass<type> _shader_register_##type(TEXT(#type), ShaderEnum::##type);
+//	extern ShaderGenerator* gShaderGenerator;
+//
+//	template<typename type>
+//	class VShaderRegisterClass
+//	{
+//	public:
+//		VShaderRegisterClass(TCHAR* name, ShaderEnum id)
+//		{
+//			type* vertexShader = new type;
+//			ShaderGenerator::RegisterVertexShader(name, vertexShader, id);
+//		}
+//	};
+//
+//	template<typename type>
+//	class PShaderRegisterClass
+//	{
+//	public:
+//		PShaderRegisterClass(TCHAR* name, ShaderEnum id)
+//		{
+//			type* vertexShader = new type;
+//			ShaderGenerator::RegisterPixelShader(name, vertexShader, id);
+//		}
+//	};
+//
+//#define REGISTR_VERTEX_SHADER(type)\
+//	VShaderRegisterClass<type> _shader_register_##type(TEXT(#type), ShaderEnum::##type);
+//
+//#define REGISTR_PIXEL_SHADER(type)\
+//	PShaderRegisterClass<type> _shader_register_##type(TEXT(#type), ShaderEnum::##type);
 }

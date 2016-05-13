@@ -1,10 +1,10 @@
 #pragma once
-#include "ShaderBase.h"
+#include "IShader.h"
 #include "ShaderGenerator.h"
 
 namespace SimpleGL
 {
-	class PixelShader : public ShaderBase
+	class PixelShader : public IShader
 	{
 	public:
 		PixelShader();
