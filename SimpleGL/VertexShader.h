@@ -8,7 +8,7 @@ namespace SimpleGL
 	class VertexShader : public IShader
 	{
 	public:
-		VertexShader();
+		VertexShader(ID3D11VertexShader* pShader);
 		virtual ~VertexShader();
 
 		virtual void Compile();

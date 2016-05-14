@@ -10,6 +10,15 @@ namespace SimpleGL
 		PixelShader();
 		virtual ~PixelShader();
 
-		virtual void Compile() {};
+		virtual std::wstring GetShaderName() override {
+			return shaderName;
+		}
+
+		virtual ShaderType GetShaderType() override {
+			return VERTEX_SHADER;
+		}
+
+	private:
+		std::wstring  shaderName;
 	};
 }

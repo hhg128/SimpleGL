@@ -3,7 +3,8 @@
 
 namespace SimpleGL
 {
-	VertexShader::VertexShader()
+	VertexShader::VertexShader(ID3D11VertexShader* pShader)
+		: m_VertexShader(pShader)
 	{
 	}
 

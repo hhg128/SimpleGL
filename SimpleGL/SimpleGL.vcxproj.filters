@@ -90,16 +90,10 @@
     <ClInclude Include="ConstantBufferBase.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="BasicVertexShader.h">
-      <Filter>소스 파일\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderGenerator.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="ShaderEnum.h">
-      <Filter>소스 파일\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="BasicPixelShader.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
@@ -170,13 +164,7 @@
     <ClCompile Include="ConstantBufferBase.cpp">
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="BasicVertexShader.cpp">
-      <Filter>소스 파일\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderGenerator.cpp">
-      <Filter>소스 파일\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="BasicPixelShader.cpp">
       <Filter>소스 파일\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
