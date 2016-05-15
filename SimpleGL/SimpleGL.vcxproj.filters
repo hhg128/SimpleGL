@@ -102,6 +102,24 @@
     <ClInclude Include="IShader.h">
       <Filter>소스 파일\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4f.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3f.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2f.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3f.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4f.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +190,24 @@
     </ClCompile>
     <ClCompile Include="IShader.cpp">
       <Filter>소스 파일\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4f.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3f.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3f.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4f.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

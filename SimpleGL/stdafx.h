@@ -33,5 +33,13 @@
 #include <DXGI.h>
 #include <d3dCompiler.h>
 #include <DirectXColors.h>
-#include <directxmath.h>
+#include <DirectXMath.h>
 #include <wrl.h>
+
+// My includes
+#include "Vector2f.h"
+#include "Vector3f.h"
+#include "Vector4f.h"
+
+#include "Matrix3f.h"
+#include "Matrix4f.h"
