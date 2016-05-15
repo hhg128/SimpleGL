@@ -16,7 +16,9 @@ namespace SimpleGL
 			return m_vRotation;
 		}
 
-		const Matrix4f ProjMatrix() const;
+		void SetProjectionParams(float zn, float zf, float aspect, float fov);
+
+		const DirectX::XMMATRIX ProjMatrixDX11() const;
 
 	private:
 		Vector3f m_vPosition;
