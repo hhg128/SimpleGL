@@ -12,7 +12,7 @@ namespace SimpleGL
 	{
 	}
 
-	void Camera::SetProjectionParams(float zn, float zf, float aspect, float fov)
+	void Camera::SetProjectionParams(const float zn, const float zf, const float aspect, const float fov)
 	{
 		m_fNear = zn;
 		m_fFar = zf;
@@ -20,11 +20,17 @@ namespace SimpleGL
 		m_fFov = fov;
 	}
 
-	const DirectX::XMMATRIX Camera::ProjMatrixDX11() const
+	const Matrix4f Camera::ProjMatrixDX11() const
 	{
 		DirectX::XMMATRIX projectionMatrix = DirectX::XMMatrixPerspectiveFovLH(m_fFov, m_fAspect, m_fNear, m_fFar);
+		
+		DirectX::XMFLOAT4X4 mat4x4;
+		XMStoreFloat4x4(&mat4x4, projectionMatrix);
 
-		return projectionMatrix;
+		Matrix4f resultMat;
+		memcpy_s(&resultMat, sizeof(resultMat), &mat4x4, sizeof(mat4x4));
+
+		return resultMat;
 	}
 
 }
