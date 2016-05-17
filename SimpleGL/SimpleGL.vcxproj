@@ -144,6 +144,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ConstantBufferBase.h" />
     <ClInclude Include="Engine.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ConstantBufferBase.cpp" />
     <ClCompile Include="Engine.cpp" />

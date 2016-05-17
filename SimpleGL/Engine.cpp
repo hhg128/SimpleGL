@@ -39,7 +39,7 @@ namespace SimpleGL
 		}
 	}
 
-	void Engine::Tick()
+	void Engine::Update()
 	{
 		while (true)
 		{

@@ -15,7 +15,7 @@ namespace SimpleGL
 
 		virtual void Initialize();
 		virtual void Finalize();
-		virtual void Tick();
+		virtual void Update();
 
 	private:
 		WindowsWindow*	RenderWindow;
